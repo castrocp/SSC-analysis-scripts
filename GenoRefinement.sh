@@ -12,8 +12,8 @@ module load picard/2.18.0
 module load VCFtools/0.1.14
 
 # Paths refer to locations on Poppy, though I've set directories/files (except for original SSC VCFs) up on foxglove to mirror poppy.
-PHASE_DIR='/data/data_repo/SSC/SSC_new/phase4/'
-OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/phase4/GenoRefinement/'
+PHASE_DIR='/nfs/boylelabnr_turbo/SSCfamilyVCFs/Newer_SSC_7.20.18/Probands_GenoRefinement/Pilot/'
+OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/pilot/GenoRefinement/'
 PED='/data/data_repo/castrocp/SSC_pipeline/Pedigree_Files/allPhases_quadsOnly.ped'
 REF_FILE='/nfs/boylelabnr_turbo/genomes/hg38/GRCh38_full_analysis_set_plus_decoy_hla.fa'
 SUPPORTING='/data/1000genomes/hg38/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf'

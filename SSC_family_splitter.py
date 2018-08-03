@@ -9,9 +9,11 @@ import time
 Will process all the multi-family VCF files in a given directory and split them into individual family VCF files.
 A mapping file for the project phase being processed should be provided
 '''
-# Provide path to the directory containing files to be split and output destination
-DIR_TO_SPLIT = '/data/data_repo/castrocp/SSC_pipeline/phase1-1/GenoRefinement_updated/Testchr10/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase1-1/GenoRefinement_updated/Testchr10/'
+# Provide path to the directory containing files to be split, output destination, and ID mapping for the phase being processed
+DIR_TO_SPLIT = '/data/data_repo/castrocp/SSC_pipeline/phase1-1/GenoRefinement/'
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase1-1/FamilyVCFs/'
+ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase1-1_quads_id_mapping.txt'
+
 
 def main():
     # Create dictionaries to match up individual family members with their corresponding sample ID and family ID
@@ -21,7 +23,7 @@ def main():
     FamilyIdDict = {}
     famIDlist = []
 
-    with open('/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase1-3_quads_id_mapping.txt',"rt") as f:
+    with open(ID_MAP,"rt") as f:
         for line in f:
             (member,sscID) = line.split()
             famID = member.split(".")[0]
@@ -36,7 +38,8 @@ def main():
             FamilyIdDict[sscID] = famID
 
     # Split each of the files in the given directory into individual family files
-    for filename in sorted(glob.glob(DIR_TO_SPLIT + '*.hiConfDeNovo.vcf.gz')):
+    # Here, I'm splitting the files that have been lifted over to hg19
+    for filename in sorted(glob.glob(DIR_TO_SPLIT + '*.hg19.vcf.gz')):
         print("Processing " + basename(filename))
         # The columns for each of the files from the same phase are probably the same, but the Columns list is repopulated for each file here just to be safe
         Columns = []
