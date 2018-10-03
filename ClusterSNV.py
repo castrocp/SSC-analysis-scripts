@@ -5,7 +5,7 @@
 # Run as:  ClusterSNV.py inFileName
 
 import sys
-
+import os
 
 def main():
 
@@ -13,7 +13,8 @@ def main():
 	inFileName = sys.argv[1]
 
 	with open (inFileName) as infile:
-		with open (inFileName + '.clustered%sbp' % winSize, "w") as outfile:
+            filebase = os.path.splitext(inFileName)[0] 	
+            with open (filebase + '.clustered%sbp' % winSize, "w") as outfile:
 			#outfile.write("Chrom" + "\t" + "start" + "\t" + "end" + "\t" + "ref" + "\t" + "alt" + "\t" + "geno" + "\t" + "famID" + "\t" + "regDB" + "\t" + "b_start" + "\t" + "b_end" + "\t" + "b_population" + "\n")
 			# Write a header to the ouput file
 			

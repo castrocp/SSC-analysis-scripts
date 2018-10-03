@@ -7,9 +7,9 @@ from os.path import basename
 import re
 
 
-DIR = '/data/data_repo/castrocp/SSC_pipeline/pilot/FamilyVCFs/combined_chroms/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/pilot/Candidate_DeNovo/'
-ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_pilot_quads_id_mapping.txt'
+DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-1/FamilyVCFs/combined_chroms/'
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-1/Candidate_DeNovo/VCF/'
+ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-1_quads_id_mapping.txt'
 
 def main():
 

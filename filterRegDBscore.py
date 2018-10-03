@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-
+import os
 
 '''
 Script will read a file that has been annotated by RegulomeDB and scored, and filter out 
@@ -18,9 +18,10 @@ def main():
     WantedScores = ["1a","1b","1c","1d","1e","1f","2a","2b","2c","3a","3b"]
 
     with open (inFileName, 'r') as infile:  #when you use "with open" you don't have to close the file later
-    	with open (inFileName + ".filteredRegDB", "w") as filteredscores: 
+    	filebase = os.path.splitext(inFileName)[0]
+        with open (filebase + ".filteredRegDBscores.bed", "w") as filteredscores: 
             for line in infile:
-            	(chrom, start, end, refAllele, altAllele, familyID, af1, af2, af3, af4, reganno, regscore)=line.strip("\n").split("\t")
+            	(chrom, start, end, refAllele, altAllele, familyID, MAF, regscore)=line.strip("\n").split("\t")
 		#,rmskchrom,rmskstart,rmskend,rmskstrand,rmskName,rmskclass,rmskfamily)= line.strip("\n").split("\t")
             	if regscore in WantedScores:
             		filteredscores.write(line) #chrom + "\t" + start + "\t" + end + "\t" + refAllele + "\t" + altAllele + "\t" + probandGT + "\t" + familyID + "\t" + score + "\t" + alleleFreq + "\n")
