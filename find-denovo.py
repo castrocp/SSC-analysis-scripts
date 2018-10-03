@@ -11,8 +11,6 @@ import gzip
 # type them in the order of their respective VCF columns.  If sibling comes first in the VCF, type "dad mom sibling proband"
 # This script will look for instances in which the proband's genotype is displayed, and the other 3 family members' genotypes are missing.  This will show up as "." and implies that they are homozygous reference.
 
-#OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-1/Candidate_DeNovo/VCF/'
-
 
 def main():
         inFileName = sys.argv[1]

@@ -18,8 +18,8 @@ Position needs to be listed as start-end in 0-based coordinates, per BED format 
 VCF coordinates are 1-based, so each position from the VCF file needs to have 1 base subracted when converted to BED format
 '''
 
-DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-1/Candidate_DeNovo/VCF/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-1/Candidate_DeNovo/BED/'
+DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs/Candidate_DeNovo/VCF/'
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs/Candidate_DeNovo/BED/'
 
 
 def main():
