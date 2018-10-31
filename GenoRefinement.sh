@@ -16,7 +16,7 @@ PHASE_DIR='/data/data_repo/SSC/SSC_new/phase3-2/'
 OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/phase3-2/GenoRefinement/'
 PED='/data/data_repo/castrocp/SSC_pipeline/Pedigree_Files/allPhases_quadsOnly.ped'
 REF_FILE='/nfs/boylelabnr_turbo/genomes/hg38/GRCh38_full_analysis_set_plus_decoy_hla.fa'
-SUPPORTING='/data/1000genomes/hg38/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf'
+SUPPORTING='/nfs/boylelab_turbo/data_repo/1000genomes/hg38/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf'
 # For liftover (reference needs to be the reference for the build I'm lifting TO)
 REFERENCE='/nfs/boylelabnr_turbo/genomes/hg19/hg19.fa.gz'
 CHAIN_FILE='/data/UCSC/LIFTOVER/hg38ToHg19.over.chain.gz'

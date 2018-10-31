@@ -8,10 +8,10 @@
 # When the command for find-denovo.py is run, type the family members in the correct order depending on looking at probands or siblings
 
 # Paths refer to locations on Poppy
-FAM_IDS='/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-1_quads_family_ids.txt'
+FAM_IDS='/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-2_quads_family_ids.txt'
 
 # Phase being processed
-PHASE_DIR='/data/data_repo/castrocp/SSC_pipeline/phase3-1'
+PHASE_DIR='/data/data_repo/castrocp/SSC_pipeline/phase3-2'
 
 # Directory containing the VCFs that have been split by families and chromosomes (the FamilyVCFs directory should have been created during the splitting step)
 SPLIT_DIR=$PHASE_DIR/FamilyVCFs
@@ -42,7 +42,8 @@ python ~/SSCpipeline/extract_hiConfDeNovo.py
 # Run the denovo variant caller script that takes the sibling's genotype into account (the script extracting hiConfDeNovo tags ignores sibling GT)
 # THIS NEEDS TO BE MODIFIED DEPENDING ON WHETHER PROCESSING PROBANDS OR SIBLINGS. Whichever column is designated as "proband" will be the one
 # checked for a heterozygous GT
-# ASSIGN THE CORRECT OUTPUT DIRECTORY IN THIS SCRIPT
+# Output files will be written to the directory that the input files are being read from. In this case HICONF_TAG_OUT_DIR/
+# The output files from this step will have the ".homRefSib" suffix
 for file in $HICONF_TAG_OUT_DIR/*.vcf; do python ~/SSCpipeline/find-denovo.py $file dad mom sibling proband; done
 
 # Convert the ouput files from the previous step into BED format
@@ -50,6 +51,6 @@ for file in $HICONF_TAG_OUT_DIR/*.vcf; do python ~/SSCpipeline/find-denovo.py $f
 python ~/SSCpipeline/convert2bed.py
 
 # Combine all the bed files from the same phase into one
-# Modify the output file name according to the phase being processed
-cat $OUT_BED/* | sortBed -i > $OUT_BED/phase3-1.deNovo.hg19.bed 
+# MODIFY OUTPUT FILE NAME HERE according to the phase being processed
+cat $OUT_BED/* | sortBed -i > $OUT_BED/phase3-2.deNovo.hg19.bed 
 

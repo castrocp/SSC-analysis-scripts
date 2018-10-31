@@ -10,9 +10,9 @@ Will process all the multi-family VCF files in a given directory and split them 
 A mapping file for the project phase being processed should be provided
 '''
 # Provide path to the directory containing files to be split, output destination, and ID mapping for the phase being processed
-DIR_TO_SPLIT = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs/GenoRefinement/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs/FamilyVCFs/'
-ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-1_quads_id_mapping.txt'
+DIR_TO_SPLIT = '/data/data_repo/castrocp/SSC_pipeline/phase3-2/GenoRefinement/'
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-2/FamilyVCFs/'
+ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-2_quads_id_mapping.txt'
 
 
 def main():

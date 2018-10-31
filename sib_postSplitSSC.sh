@@ -7,13 +7,13 @@
 # When the command for find-denovo.py is run, type the family members in the correct order depending on looking at probands or siblings
 
 # Paths refer to locations on Poppy
-FAM_IDS='/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-1_quads_family_ids.txt'
+FAM_IDS='/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-2_quads_151-226_family_ids.txt'
 
 # Phase being processed
-PHASE_DIR='/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs'
+PHASE_DIR='/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-2_sibs'
 
 # Directory containing the VCFs that have been split by families and chromosomes (the FamilyVCFs directory should have been created during the splitting step)
-SPLIT_DIR=$PHASE_DIR/FamilyVCFs
+SPLIT_DIR=$PHASE_DIR/FamilyVCFs/Fams151-226
 
 # Output directory for files combined by family
 mkdir $SPLIT_DIR/combined_chroms 
@@ -22,10 +22,11 @@ COMBINED_DIR=$SPLIT_DIR/combined_chroms
 # Output directory for files with hiConfDeNovo tags corresponding to appropriate family
 # The directories are referenced by the "extract_hiConfDeNovo.py" script
 mkdir $PHASE_DIR/Candidate_DeNovo
-mkdir $PHASE_DIR/Candidate_DeNovo/VCF
-mkdir $PHASE_DIR/Candidate_DeNovo/BED
-HICONF_TAG_OUT_DIR=$PHASE_DIR/Candidate_DeNovo/VCF
-OUT_BED=$PHASE_DIR/Candidate_DeNovo/BED
+mkdir $PHASE_DIR/Candidate_DeNovo/Fams151-226
+mkdir $PHASE_DIR/Candidate_DeNovo/Fams151-226/VCF
+mkdir $PHASE_DIR/Candidate_DeNovo/Fams151-226/BED
+HICONF_TAG_OUT_DIR=$PHASE_DIR/Candidate_DeNovo/Fams151-226/VCF
+OUT_BED=$PHASE_DIR/Candidate_DeNovo/Fams151-226/BED
 
 # Combine all chromosome files belonging to the same family; since each file has a header just keep one at the beginning and remove all the extras
 # Remove unlocalized contigs
@@ -45,9 +46,9 @@ for file in $HICONF_TAG_OUT_DIR/*.vcf; do python ~/SSCpipeline/find-denovo.py $f
 
 # Convert the ouput files from the previous step into BED format
 # As with the other scripts, modify the script to indicate the correct directories
-python ~/SSCpipeline/convert2bed.py
+python ~/SSCpipeline/sib_convert2bed.py
 
 # Combine all the bed files from the same phase into one
 # Modify the output file name according to the phase being processed
-cat $OUT_BED/* | sortBed -i > $OUT_BED/sib_phase3-1.deNovo.hg19.bed 
+cat $OUT_BED/* | sortBed -i > $OUT_BED/sib_phase3-2.Fams151-226.deNovo.hg19.bed 
 

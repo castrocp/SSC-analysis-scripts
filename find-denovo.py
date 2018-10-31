@@ -9,7 +9,7 @@ import gzip
 # find-denovo.py <VCFfilename>  <first person> <second person> <third person> <fourth person>
 # (type "mom","dad", "proband", or "sibling")
 # type them in the order of their respective VCF columns.  If sibling comes first in the VCF, type "dad mom sibling proband"
-# This script will look for instances in which the proband's genotype is displayed, and the other 3 family members' genotypes are missing.  This will show up as "." and implies that they are homozygous reference.
+# This script will look for instances in which the proband's genotype is heterozygous, and the other 3 family members' genotypes are homozygous reference.
 
 
 def main():

@@ -6,12 +6,10 @@ import os.path
 from os.path import basename
 import re
 
-# This version of the script is meant to process the siblings.
-# The difference is it looks for the ".s1" suffix (indicating a sibling ID) instead of ".p1" for probands
 
-DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs/FamilyVCFs/combined_chroms/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-1_sibs/Candidate_DeNovo/VCF/'
-ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-1_quads_id_mapping.txt'
+DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-2_sibs/FamilyVCFs/Fams151-226/combined_chroms/'
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-2_sibs/Candidate_DeNovo/Fams151-226/VCF/'
+ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase3-2_quads_151-226_id_mapping.txt'
 
 def main():
 
@@ -33,6 +31,8 @@ def main():
         with open(file) as infile:
             with open(OUT_DIR + famID + ".deNovo.hg19.vcf","w" ) as out_file:
                 for line in infile:
+                    # In the version of this script meant to be run on the probands the suffix it will look for is ".p1" instead.
+                    # Rather than change the script each time to account for siblings and probands, I just have one copy for each.
                     if FamilyMemberDict[famID + ".s1"] in line:
                         out_file.write(line)
             
