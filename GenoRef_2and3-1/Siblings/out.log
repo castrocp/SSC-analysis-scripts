@@ -1,0 +1,18 @@
+
+VCFtools - 0.1.14
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /data/data_repo/castrocp/SSC_pipeline/Siblings/phase2and3-1_sibs/GenoRefinement/Fams976-1050/CCDG_4500JG_B01_GRM_WGS_2017-05-24_chr1.recalibrated_variants.fams976-1050.vcf.REDO.gz.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.hiConfDeNovo.vcf.gz
+	--recode-INFO-all
+	--max-alleles 2
+	--recode
+	--remove-filtered-all
+	--remove-indels
+	--stdout
+
+Using zlib version: 1.2.8
+After filtering, kept 300 out of 300 Individuals
+Outputting VCF file...
+After filtering, kept 727 out of a possible 2726 Sites
+Run Time = 1.00 seconds

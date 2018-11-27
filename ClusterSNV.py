@@ -27,7 +27,7 @@ def main():
 				bin_pop = 1
 				# To keep track of how many variants are found within each bin
 				
-				(chrom, start, end, ref, alt, famID, freq, regdb) = line.strip("\n").split()
+				(chrom, start, end, ref, alt, famID, regdb) = line.strip("\n").split()
 				# Had to add extra columns to make this work with an updated input file format
 				# This is the line format in the candidate denovos file after the RegDB annotation step  
 				

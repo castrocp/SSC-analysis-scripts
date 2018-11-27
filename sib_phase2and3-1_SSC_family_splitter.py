@@ -9,19 +9,30 @@ import time
 Will process all the multi-family VCF files in a given directory and split them into individual family VCF files.
 A mapping file for the project phase being processed should be provided
 
-Make sure the paths to the directories are set at the top of the script to run on the appropriate phase
+This version of the script was written to run on the phase2and3-1 families.  The hard-coded paths will be different for other phases.
+
+The script requires the user to input the families to be processed as a range.  These are the groups that phase2and3-1 were split into.
 
 Run as:
-python SSC_family_splitter.py
+python SSC_family_splitter.py 151-225
 
+That will process the families from the batch of 151-225 (of the 1132 total families in phase2and3-1)
 '''
 
 import sys
+import subprocess
+
+try:
+    fams = sys.argv[1]
+except:
+    print("Enter the range of families to be processed after the script name")
 
 # Provide path to the directory containing files to be split, output destination, and ID mapping for the phase being processed
-DIR_TO_SPLIT = '/data/data_repo/castrocp/SSC_pipeline/phase4/GenoRefinement/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase4/FamilyVCFs/'
-ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_phase4_quads_id_mapping.txt'
+DIR_TO_SPLIT = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase2and3-1_sibs/GenoRefinement/Fams' + fams + '/'
+
+subprocess.run(['mkdir', '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase2and3-1_sibs/FamilyVCFs/Fams' + fams + '/'])
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase2and3-1_sibs/FamilyVCFs/Fams' + fams + '/'
+ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/phase2and3-1/ssc_phase2and3-1_quads_' + fams + '_id_mapping.txt'
 
 def main():
     # Create dictionaries to match up individual family members with their corresponding sample ID and family ID

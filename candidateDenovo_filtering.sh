@@ -14,9 +14,9 @@ base=$(basename $INFILE_PATH .bed)
 
 
 # Remove variants that appear in the same exact position in more than one family
-awk -F"\t" '{print $1"_"$2}' OFS="\t"  $INFILE_PATH | uniq -c | awk '$1==1 {print $2}' | sed 's/_/\t/g' > $OUT_DIR/$base.sites_appearing_only_once
+	#awk -F"\t" '{print $1"_"$2}' OFS="\t"  $INFILE_PATH | uniq -c | awk '$1==1 {print $2}' | sed 's/_/\t/g' > $OUT_DIR/$base.sites_appearing_only_once
 
-grep -Ff $OUT_DIR/$base.sites_appearing_only_once $INFILE_PATH > $OUT_DIR/$base.uniqueLoci.bed
+	#grep -Ff $OUT_DIR/$base.sites_appearing_only_once $INFILE_PATH > $OUT_DIR/$base.uniqueLoci.bed
 
 
 # Remove INDELS

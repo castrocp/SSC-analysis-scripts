@@ -12,8 +12,8 @@ module load picard/2.18.0
 module load VCFtools/0.1.14
 
 # Paths refer to locations on Poppy, though I've set directories/files (except for original SSC VCFs) up on foxglove to mirror poppy.
-PHASE_DIR='/data/data_repo/castrocp/SSC_pipeline/phase2and3-1/SplitPhase/Fams76-150/chrom1/'
-OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/phase2and3-1/GenoRefinement/Fams76-150/'
+PHASE_DIR='/data/data_repo/castrocp/SSC_pipeline/phase2and3-1/SplitPhase/Fams976-1050/chrom1/'
+OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/phase2and3-1/GenoRefinement/Fams976-1050/'
 PED='/data/data_repo/castrocp/SSC_pipeline/Pedigree_Files/allPhases_quadsOnly.ped'
 REF_FILE='/nfs/boylelabnr_turbo/genomes/hg38/GRCh38_full_analysis_set_plus_decoy_hla.fa'
 SUPPORTING='/nfs/boylelab_turbo/data_repo/1000genomes/hg38/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf'
@@ -50,6 +50,8 @@ do
 	# Filter down to variants tagged as high confidence de novos.  Keep header lines.
 	zgrep -E '#|hiConfDeNovo' $OUT_DIR$base.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.vcf.gz | gzip > $OUT_DIR$base.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.hiConfDeNovo.vcf.gz
 	
+	# Delete Intermediate file
+	rm $OUT_DIR$base.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.vcf.gz
 
 	# Filter out variants that aren't bi-allelic SNPS and variants that don't "PASS" VQSR
 	vcftools --gzvcf $OUT_DIR$base.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.hiConfDeNovo.vcf.gz --remove-indels --remove-filtered-all --max-alleles 2 --recode --recode-INFO-all --stdout | gzip -c > $OUT_DIR$base.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.hiConfDeNovo.snps_passVQSR.vcf.gz

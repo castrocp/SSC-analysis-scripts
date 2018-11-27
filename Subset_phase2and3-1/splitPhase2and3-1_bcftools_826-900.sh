@@ -4,9 +4,9 @@ module load BCFtools/1.3-foss-2017a
 module load HTSlib/1.6-foss-2017a #for tabix
 
 PHASE_DIR='/data/data_repo/SSC/SSC_new/phase2and3-1'
-SAMPLE_FILE='/data/data_repo/castrocp/SSC_pipeline/ID_mapping/phase2and3-1/ssc_phase2and3-1_quads_976-1050_sample_ids.txt'
-OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/phase2and3-1/SplitPhase/Fams976-1050'
-BATCH_NUM='fams976-1050'
+SAMPLE_FILE='/data/data_repo/castrocp/SSC_pipeline/ID_mapping/phase2and3-1/ssc_phase2and3-1_quads_826-900_sample_ids.txt'
+OUT_DIR='/data/data_repo/castrocp/SSC_pipeline/phase2and3-1/SplitPhase/Fams826-900/chrom1'
+BATCH_NUM='fams826-900'
 
 for file in $PHASE_DIR/*.vcf.gz
 

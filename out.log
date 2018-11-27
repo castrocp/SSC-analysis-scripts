@@ -3,7 +3,7 @@ VCFtools - 0.1.14
 (C) Adam Auton and Anthony Marcketta 2009
 
 Parameters as interpreted:
-	--gzvcf /data/data_repo/castrocp/SSC_pipeline/Siblings/phase3-2_sibs/GenoRefinement/Families151-226/STA_11032_B01_GRM_WGS_2017-06-27_chrY.recalibrated_variants.families151-226.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.hiConfDeNovo.vcf.gz
+	--gzvcf /data/data_repo/castrocp/SSC_pipeline/Siblings/phase4_sibs/GenoRefinement/REI_12386_B01_GRM_WGS_2018-01-31_chrY.recalibrated_variants.fams1-5.CGP_ped.tag_lowGQ_DP.tag_possibleDenovo.hiConfDeNovo.vcf.gz
 	--recode-INFO-all
 	--max-alleles 2
 	--recode
@@ -12,7 +12,7 @@ Parameters as interpreted:
 	--stdout
 
 Using zlib version: 1.2.8
-After filtering, kept 304 out of 304 Individuals
+After filtering, kept 20 out of 20 Individuals
 Outputting VCF file...
-After filtering, kept 4 out of a possible 406 Sites
+After filtering, kept 1 out of a possible 130 Sites
 Run Time = 0.00 seconds
