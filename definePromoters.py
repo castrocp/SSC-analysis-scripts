@@ -10,11 +10,11 @@ import gzip
 import re
 
 infile = "/home/castrocp/GencodeReferences/v19.hg19/gencode.v19.annotation.gtf.gz"
-outfile = open("/home/castrocp/GencodeReferences/v19.hg19/gencode.v19.annotation.gtf.promoterss.bed","w")
-span = 1000
+span = 1500
+outfile = open("/home/castrocp/GencodeReferences/v19.hg19/gencode.v19.annotation.gtf.promoters." + str(span) + "bp_upstream.bed","w")
 
-with gzip.open(infile) as f:
-
+with gzip.open(infile, mode='rt') as f:
+# 'rt' opens the file in text mode, which reads characters as strings instead of bytes, since we're opening a gzipped file
 
     for line in f:
         if not line.startswith("#"):
@@ -30,13 +30,20 @@ with gzip.open(infile) as f:
             if feature == "transcript":
                 if strand == "+":
                     promoter_start = int(start) - int(span)
-                    promoter_end = start
-                else:
-                    promoter_start = int(end) - int(span)
-                    promoter_end = end
-            
-                # adjust the promoter start coordinate in case it goes negative
-                if promoter_start < 0:
-                    promoter_start = 0
+                    promoter_end = int(start) - 1
                 
-                outfile.write(chrom + "\t" + str(promoter_start) + "\t" + str(promoter_end) + "\t" + strand + "\n") 
+                    if promoter_start < 0:
+                        promoter_start = 0
+                    #convert to zero-based for BED format
+                    outfile.write(chrom + "\t" + str(promoter_start-1) + "\t" + str(promoter_end-1) + "\t" + strand + "\n")
+
+                else:
+                    promoter_start = int(end) + int(span)
+                    promoter_end = int(end) + 1
+            
+                    # adjust the promoter start coordinate in case it goes negative
+                    if promoter_start < 0:
+                        promoter_start = 0
+                
+                    #convert to zero-based for BED format. Print from end to start to account for reverse-strand.
+                    outfile.write(chrom + "\t" + str(promoter_end-1) + "\t" + str(promoter_start-1) + "\t" + strand + "\n") 
