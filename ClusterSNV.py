@@ -26,15 +26,17 @@ def main():
 				
 				bin_pop = 1
 				# To keep track of how many variants are found within each bin
-				
-				(chrom, start, end, ref, alt, famID, regdb) = line.strip("\n").split()
+			        
+                                cols = line.strip("\n").split()
+                             
+				#(chrom, start, end, ref, alt, famID, regdb) = line.strip("\n").split()
 				# Had to add extra columns to make this work with an updated input file format
 				# This is the line format in the candidate denovos file after the RegDB annotation step  
 				
-				start_bin = int(start)
+				start_bin = int(cols[1])
 				# The coordinates in the input file are 0-based. I'm using the start coordinate to mark the start of a variant's bin
 					
-				end_bin = start
+				end_bin = int(cols[1])
 				# If no other variant is added to the bin, the bin starts and ends at the same point. Otherwise, the ending point is updated. 		
 				current_line_pointer = infile.tell()
 				# This variable saves the location of the pointer so we can go back to this line position
