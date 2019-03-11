@@ -32,8 +32,8 @@ with gzip.open(infile, mode='rt') as f:
                     promoter_start = int(start) - int(span)
                     promoter_end = int(start) - 1
                 
-                    if promoter_start < 0:
-                        promoter_start = 0
+                    if promoter_start <= 0:
+                        promoter_start = 1
                     #convert to zero-based for BED format
                     outfile.write(chrom + "\t" + str(promoter_start-1) + "\t" + str(promoter_end-1) + "\t" + strand + "\n")
 
@@ -42,8 +42,8 @@ with gzip.open(infile, mode='rt') as f:
                     promoter_end = int(end) + 1
             
                     # adjust the promoter start coordinate in case it goes negative
-                    if promoter_start < 0:
-                        promoter_start = 0
+                    if promoter_start <= 0:
+                        promoter_start = 1 # originally had this set to 0, but when it's written in BED format subtracting 1 would make negative
                 
                     #convert to zero-based for BED format. Print from end to start to account for reverse-strand.
                     outfile.write(chrom + "\t" + str(promoter_end-1) + "\t" + str(promoter_start-1) + "\t" + strand + "\n") 

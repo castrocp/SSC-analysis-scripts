@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import sys
 import os
 from os.path import basename
@@ -18,17 +19,17 @@ Position needs to be listed as start-end in 0-based coordinates, per BED format 
 VCF coordinates are 1-based, so each position from the VCF file needs to have 1 base subracted when converted to BED format
 '''
 
-DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-2/Candidate_DeNovo/VCF/'
-OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/phase3-2/Candidate_DeNovo/BED/'
+DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase4_sibs/Candidate_DeNovo/VCF/'
+OUT_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/phase4_sibs/Candidate_DeNovo/BED/'
 
 
 def main():
 	
-    for file in sorted(glob.glob(DIR + '*.homRefSib')):
+    for file in sorted(glob.glob(DIR + '*.GQ99')):
         familyID = (os.path.splitext(basename(file)) [0]).split(".")[0]
         
         with open(file) as infile:
-            with open (OUT_DIR + familyID + ".deNovo.hg19.bed" ,"w") as Bed:
+            with open (OUT_DIR + familyID + ".deNovo.hg19.GQ99.bed" ,"w") as Bed:
                 for line in infile:
                     if not line.startswith("#"):
 		    # skip the header lines	

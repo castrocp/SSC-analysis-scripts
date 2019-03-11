@@ -36,7 +36,7 @@ except:
     print("Enter 'proband' or 'sibling' after the family range")
 
 FAM_IDS = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_' + phase + '_quads_family_ids.txt'
-PHASE_DIR = '/data/data_repo/castrocp/SSC_pipeline/' + phase
+PHASE_DIR = '/data/data_repo/castrocp/SSC_pipeline/Siblings/' + phase + '_sibs'
 ID_MAP = '/data/data_repo/castrocp/SSC_pipeline/ID_mapping/ssc_' + phase + '_quads_id_mapping.txt'
 
 # The directory containing the VCFs that have been split by families and chromosomes
@@ -91,7 +91,7 @@ def main():
         with open(file) as infile:
             with open(HICONF_TAG_OUT_DIR + "/" + famID + ".deNovo.hg19.vcf","w" ) as out_file:
                 for line in infile:
-                    if FamilyMemberDict[famID + ".p1"] in line:
+                    if FamilyMemberDict[famID + ".s1"] in line:
                         out_file.write(line)
 
     #### Filter the variants down to those in which the sibling is heterozygous reference.
