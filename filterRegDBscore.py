@@ -21,8 +21,10 @@ def main():
         filebase = os.path.splitext(inFileName)[0]
         with open (filebase + ".filteredRegDBscores.bed", "w") as filteredscores: 
             for line in infile:
-                (chrom, start, end, refAllele, altAllele, familyID, MAF, regscore, more_annotations)=line.strip("\n").split()
-		#,rmskchrom,rmskstart,rmskend,rmskstrand,rmskName,rmskclass,rmskfamily)= line.strip("\n").split("\t")
+                columns = line.strip("\n").split("\t")
+                regscore = columns[7] # this may vary if the column order changes
+
+                #(chrom, start, end, refAllele, altAllele, familyID, MAF, regscore, more_annotations)=line.strip("\n").split("\t")
                 if regscore in WantedScores:
                     filteredscores.write(line) #chrom + "\t" + start + "\t" + end + "\t" + refAllele + "\t" + altAllele + "\t" + probandGT + "\t" + familyID + "\t" + score + "\t" + alleleFreq + "\n")
 		# Coordinates will be 0-based since the input file was 0-based
