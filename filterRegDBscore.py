@@ -21,7 +21,7 @@ def main():
         filebase = os.path.splitext(inFileName)[0]
         with open (filebase + ".filteredRegDBscores.bed", "w") as filteredscores: 
             for line in infile:
-                (chrom, start, end, refAllele, altAllele, familyID, regscore)=line.strip("\n").split("\t")
+                (chrom, start, end, refAllele, altAllele, familyID, MAF, regscore, more_annotations)=line.strip("\n").split()
 		#,rmskchrom,rmskstart,rmskend,rmskstrand,rmskName,rmskclass,rmskfamily)= line.strip("\n").split("\t")
                 if regscore in WantedScores:
                     filteredscores.write(line) #chrom + "\t" + start + "\t" + end + "\t" + refAllele + "\t" + altAllele + "\t" + probandGT + "\t" + familyID + "\t" + score + "\t" + alleleFreq + "\n")
